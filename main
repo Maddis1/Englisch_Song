@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Five Hundred Feet Below | Victorian Mine Child Labor</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Merriweather for historical feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coal: {
+                            900: '#0c0e12',
+                            800: '#12141a', // Base dark slate background
+                            700: '#1a1d26',
+                            600: '#252936',
+                            500: '#343a4c'
+                        },
+                        amber: {
+                            lantern: '#f39c12',
+                            glow: '#e67e22',
+                            warm: '#d35400'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #12141a;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Ambient lantern glow effect */
+        .lantern-glow {
+            box-shadow: 0 0 25px rgba(243, 156, 18, 0.18);
+        }
+
+        .lantern-glow-strong {
+            box-shadow: 0 0 35px rgba(243, 156, 18, 0.35);
+        }
+
+        .lantern-border {
+            border-color: rgba(243, 156, 18, 0.3);
+        }
+
+        .lantern-border:hover {
+            border-color: rgba(243, 156, 18, 0.8);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0c0e12;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #252936;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f39c12;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-black">
+
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-coal-900/90 border-b border-coal-700/60 transition-all duration-300">
+        <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-3 group">
+                <span class="p-2 rounded-lg bg-amber-lantern/10 text-amber-lantern group-hover:bg-amber-lantern group-hover:text-black transition-colors">
+                    <i class="fa-solid fa-fire-flame-simple text-xl"></i>
+                </span>
+                <span class="font-bold text-lg text-slate-100 tracking-wide group-hover:text-amber-lantern transition-colors">
+                    500 Feet Below
+                </span>
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
+                <a href="#media" class="hover:text-amber-lantern transition-colors"><i class="fa-solid fa-music mr-1.5"></i>Song & Media</a>
+                <a href="#story" class="hover:text-amber-lantern transition-colors"><i class="fa-solid fa-book-open mr-1.5"></i>The Story</a>
+                <a href="#history" class="hover:text-amber-lantern transition-colors"><i class="fa-solid fa-landmark mr-1.5"></i>Historical Context</a>
+                <a href="#act1842" class="hover:text-amber-lantern transition-colors"><i class="fa-solid fa-gavel mr-1.5"></i>Mines Act 1842</a>
+                <a href="#glossary" class="hover:text-amber-lantern transition-colors"><i class="fa-solid fa-lightbulb mr-1.5"></i>Key Terms</a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-slate-300 hover:text-amber-lantern hover:bg-coal-700 focus:outline-none">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-coal-900 border-b border-coal-700 px-4 pt-2 pb-4 space-y-2 text-slate-300">
+            <a href="#media" class="block py-2 px-3 rounded-lg hover:bg-coal-800 hover:text-amber-lantern"><i class="fa-solid fa-music mr-2"></i>Song & Media</a>
+            <a href="#story" class="block py-2 px-3 rounded-lg hover:bg-coal-800 hover:text-amber-lantern"><i class="fa-solid fa-book-open mr-2"></i>The Story</a>
+            <a href="#history" class="block py-2 px-3 rounded-lg hover:bg-coal-800 hover:text-amber-lantern"><i class="fa-solid fa-landmark mr-2"></i>Historical Context</a>
+            <a href="#act1842" class="block py-2 px-3 rounded-lg hover:bg-coal-800 hover:text-amber-lantern"><i class="fa-solid fa-gavel mr-2"></i>Mines Act 1842</a>
+            <a href="#glossary" class="block py-2 px-3 rounded-lg hover:bg-coal-800 hover:text-amber-lantern"><i class="fa-solid fa-lightbulb mr-2"></i>Key Terms</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <section class="relative py-20 px-4 sm:px-6 lg:px-8 text-center bg-gradient-to-b from-coal-900 via-coal-800 to-coal-800 overflow-hidden">
+            <!-- Background lantern glow effect -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-amber-lantern/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-4xl mx-auto relative z-10">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-amber-lantern/10 text-amber-lantern border border-amber-lantern/30 mb-6">
+                    <i class="fa-solid fa-helmet-safety mr-2"></i> Victorian History & Music Project
+                </span>
+                
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-4 font-serif">
+                    Five Hundred Feet Below
+                </h1>
+                
+                <p class="text-lg sm:text-xl text-amber-lantern/90 font-medium max-w-2xl mx-auto mb-8">
+                    Child Labor in Victorian Coal Mines & The Story of the Trapper Boys
+                </p>
+
+                <p class="text-slate-300 max-w-2xl mx-auto leading-relaxed mb-10 text-base">
+                    This presentation explores a tragic folk ballad about a 12-year-old boy working deep underground in a 19th-century British coal mine. Learn about the real history behind the song and how young children lived and worked in darkness.
+                </p>
+
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#media" class="px-6 py-3 rounded-lg bg-amber-lantern text-coal-900 font-bold hover:bg-amber-400 transition-all transform hover:-translate-y-0.5 shadow-lg shadow-amber-lantern/20">
+                        <i class="fa-solid fa-play mr-2"></i> Listen to the Song
+                    </a>
+                    <a href="#history" class="px-6 py-3 rounded-lg bg-coal-700 text-slate-200 font-semibold hover:bg-coal-600 border border-coal-600 transition-all">
+                        <i class="fa-solid fa-graduation-cap mr-2"></i> Historical Context
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="media" class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+            <div class="bg-coal-700/50 rounded-2xl p-6 sm:p-8 border lantern-border lantern-glow transition-all duration-300">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <!-- Album Cover Container -->
+                    <div class="w-full md:w-1/3 flex-shrink-0">
+                        <div class="relative group rounded-xl overflow-hidden border-2 border-coal-600 bg-coal-900 shadow-xl">
+                            <img 
+                                src="cover.jpg" 
+                                alt="Song Cover Art - Five Hundred Feet Below" 
+                                class="w-full h-64 md:h-72 object-cover transition-transform duration-500 group-hover:scale-105"
+                                onerror="this.onerror=null; this.src='https://placehold.co/600x600/1a1d26/f39c12?text=Five+Hundred+Feet+Below\nCover+Art';"
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-t from-coal-900 via-transparent to-transparent opacity-60"></div>
+                            <div class="absolute bottom-3 left-3 right-3 text-xs text-amber-lantern font-medium bg-coal-900/80 backdrop-blur-sm px-2.5 py-1 rounded">
+                                <i class="fa-solid fa-file-image mr-1"></i> cover.jpg
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Audio Player & Info -->
+                    <div class="w-full md:w-2/3 flex flex-col justify-between space-y-6">
+                        <div>
+                            <span class="text-xs uppercase font-bold tracking-widest text-amber-lantern">Song Player</span>
+                            <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1 mb-2 font-serif">Five Hundred Feet Below</h2>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Listen to the song below. It tells the emotional story of a young boy trapped deep in a dark coal mine shaft after a cave-in.
+                            </p>
+                        </div>
+
+                        <!-- Audio Element Container -->
+                        <div class="bg-coal-800 p-4 rounded-xl border border-coal-600">
+                            <label class="block text-xs font-medium text-slate-400 mb-2 flex items-center justify-between">
+                                <span><i class="fa-solid fa-circle-play text-amber-lantern mr-1.5"></i> Audio Track (`song.mp3`)</span>
+                                <span class="text-xs text-slate-500">MP3 Audio</span>
+                            </label>
+                            
+                            <audio controls class="w-full h-11 accent-amber-lantern rounded-lg focus:outline-none">
+                                <source src="song.mp3" type="audio/mpeg">
+                                <source src="song.mp3" type="audio/mp3">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+
+                        <!-- Technical details for project presentation -->
+                        <div class="grid grid-cols-2 gap-4 text-xs text-slate-400 border-t border-coal-600/60 pt-4">
+                            <div>
+                                <span class="text-slate-500 block">Theme:</span>
+                                <span class="text-slate-300 font-medium">Child Labor / Victorian Era</span>
+                            </div>
+                            <div>
+                                <span class="text-slate-500 block">Key Instrument:</span>
+                                <span class="text-slate-300 font-medium">Acoustic Guitar / Vocal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="story" class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-white font-serif mb-3">The Story Behind the Song</h2>
+                <div class="w-20 h-1 bg-amber-lantern mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 items-stretch">
+                <!-- Highlighted Chorus Block -->
+                <div class="bg-coal-900/90 rounded-2xl p-6 sm:p-8 border-l-4 border-amber-lantern border-y border-r border-coal-700 flex flex-col justify-between shadow-xl">
+                    <div>
+                        <div class="flex items-center space-x-2 text-amber-lantern mb-4 text-sm font-semibold">
+                            <i class="fa-solid fa-quote-left text-xl"></i>
+                            <span>Song Chorus</span>
+                        </div>
+                        
+                        <blockquote class="text-lg sm:text-xl font-serif italic text-slate-100 leading-relaxed mb-6">
+                            "Hold back the heavy shale that steals the breath of me<br>
+                            The black dust fills my lungs and I can no more see<br>
+                            Five hundred feet below, my mother weeps for home<br>
+                            A little trapper boy left under here alone"
+                        </blockquote>
+                    </div>
+
+                    <div class="pt-4 border-t border-coal-800 text-xs text-amber-lantern/80 flex items-center justify-between">
+                        <span><i class="fa-solid fa-music mr-1"></i> Key Quote from the Lyrics</span>
+                        <span>4 Lines Quote</span>
+                    </div>
+                </div>
+
+                <!-- Story Summary (7th grade level) -->
+                <div class="bg-coal-700/40 rounded-2xl p-6 sm:p-8 border border-coal-600 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center space-x-2 text-amber-lantern mb-4 text-sm font-semibold">
+                            <i class="fa-solid fa-book text-lg"></i>
+                            <span>Summary of the Song</span>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white mb-3">What Happens in the Song?</h3>
+                        
+                        <div class="space-y-3 text-slate-300 text-sm leading-relaxed">
+                            <p>
+                                The song tells the story of a <strong>12-year-old trapper boy</strong> working deep in a coal mine in England. Every morning, he goes down 500 feet into complete darkness carrying only a small safety lamp.
+                            </p>
+                            <p>
+                                His job is to sit alone all day in the cold tunnel and open heavy air doors whenever coal carts pass by. 
+                            </p>
+                            <p>
+                                Suddenly, a terrible accident happens: the wooden supports break and tons of heavy rocks and shale fall from the ceiling. The boy becomes trapped deep underground. Even though rescuers try to dig him out, it is too late.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-coal-600/60 text-xs text-slate-400">
+                        <i class="fa-solid fa-circle-info text-amber-lantern mr-1"></i> The song highlights the loneliness, danger, and sadness experienced by child miners in 19th-century Britain.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="history" class="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-xs font-bold tracking-widest text-amber-lantern uppercase">Background Knowledge</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white font-serif mt-1 mb-3">Historical Context</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-sm">
+                    Understanding the real conditions of child workers in 19th-century British coal mines.
+                </p>
+            </div>
+
+            <!-- 3 Columns Historical Context -->
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Section 1 -->
+                <div class="bg-coal-700/40 rounded-xl p-6 border border-coal-600 hover:border-amber-lantern/50 transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-lg bg-amber-lantern/10 text-amber-lantern flex items-center justify-center mb-5 group-hover:bg-amber-lantern group-hover:text-black transition-colors">
+                            <i class="fa-solid fa-door-open text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">1. Who Were Trapper Boys?</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                            Trapper boys were often the youngest children working in coal mines (some as young as 6 to 12 years old). 
+                        </p>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Their main task was sitting by a ventilation door (trapdoor) for 12 to 14 hours a day. They had to pull a rope to open the door when coal wagons came through and close it immediately to keep fresh air flowing through the mine tunnels.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-coal-600/60 text-xs text-amber-lantern font-medium">
+                        <i class="fa-solid fa-clock mr-1"></i> Worked 12-14 hours per day
+                    </div>
+                </div>
+
+                <!-- Section 2 -->
+                <div class="bg-coal-700/40 rounded-xl p-6 border border-coal-600 hover:border-amber-lantern/50 transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-lg bg-amber-lantern/10 text-amber-lantern flex items-center justify-center mb-5 group-hover:bg-amber-lantern group-hover:text-black transition-colors">
+                            <i class="fa-solid fa-mountain text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">2. Life Deep Underground</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                            Working conditions underground were extremely harsh and terrifying:
+                        </p>
+                        <ul class="space-y-2 text-slate-300 text-sm">
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-angle-right text-amber-lantern mt-1 mr-2 text-xs"></i>
+                                <span><strong>Total Darkness:</strong> Children sat alone in pitch black to save expensive candle wax.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-angle-right text-amber-lantern mt-1 mr-2 text-xs"></i>
+                                <span><strong>Toxic Dust & Gases:</strong> Black coal dust ruined miners' lungs and caused breathing diseases.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-angle-right text-amber-lantern mt-1 mr-2 text-xs"></i>
+                                <span><strong>Cave-ins:</strong> Mine roofs frequently collapsed under tons of heavy stone and shale.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-coal-600/60 text-xs text-amber-lantern font-medium">
+                        <i class="fa-solid fa-triangle-exclamation mr-1"></i> Extremely dangerous conditions
+                    </div>
+                </div>
+
+                <!-- Section 3 -->
+                <div id="act1842" class="bg-coal-700/40 rounded-xl p-6 border border-coal-600 hover:border-amber-lantern/50 transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-lg bg-amber-lantern/10 text-amber-lantern flex items-center justify-center mb-5 group-hover:bg-amber-lantern group-hover:text-black transition-colors">
+                            <i class="fa-solid fa-gavel text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">3. The Mines Act of 1842</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                            In 1842, a government report shocked the British public with drawings and stories showing young children working in terrible conditions.
+                        </p>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            This public outrage led Parliament to pass <strong>The Mines Act of 1842</strong>. This landmark law made it illegal for boys under 10 years old and all women to work underground in mines.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-coal-600/60 text-xs text-amber-lantern font-medium">
+                        <i class="fa-solid fa-scale-balanced mr-1"></i> First major law protecting child workers
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="glossary" class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+            <div class="bg-coal-900 border border-coal-700 rounded-2xl p-6 sm:p-8">
+                <div class="flex items-center space-x-3 mb-6">
+                    <span class="p-2 rounded-lg bg-amber-lantern/10 text-amber-lantern">
+                        <i class="fa-solid fa-lightbulb text-xl"></i>
+                    </span>
+                    <div>
+                        <h3 class="text-2xl font-bold text-white font-serif">Key Vocabulary & Terms</h3>
+                        <p class="text-xs text-slate-400">Important words mentioned in the song and historical text</p>
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="bg-coal-800 p-4 rounded-xl border border-coal-700">
+                        <h4 class="font-bold text-amber-lantern text-base mb-1">Davy Lamp</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            A safety lamp invented in 1815 by Sir Humphry Davy. It used a wire gauze around the flame to prevent flammable mine gases from exploding.
+                        </p>
+                    </div>
+
+                    <div class="bg-coal-800 p-4 rounded-xl border border-coal-700">
+                        <h4 class="font-bold text-amber-lantern text-base mb-1">Shale</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            A type of soft, dark rock that breaks easily into thin layers. Mine roofs were often made of shale, which could fall suddenly.
+                        </p>
+                    </div>
+
+                    <div class="bg-coal-800 p-4 rounded-xl border border-coal-700">
+                        <h4 class="font-bold text-amber-lantern text-base mb-1">Brattice</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            A wooden wall or cloth partition built inside a mine tunnel to direct fresh air to the workers.
+                        </p>
+                    </div>
+
+                    <div class="bg-coal-800 p-4 rounded-xl border border-coal-700">
+                        <h4 class="font-bold text-amber-lantern text-base mb-1">Choke Damp</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            A dangerous gas (mostly carbon dioxide and nitrogen) found in mines that suffocates workers when oxygen runs out.
+                        </p>
+                    </div>
+
+                    <div class="bg-coal-800 p-4 rounded-xl border border-coal-700">
+                        <h4 class="font-bold text-amber-lantern text-base mb-1">Trapper Boy</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            A young child hired to operate air trapdoors inside mine tunnels to control air ventilation.
+                        </p>
+                    </div>
+
+                    <div class="bg-coal-800 p-4 rounded-xl border border-coal-700">
+                        <h4 class="font-bold text-amber-lantern text-base mb-1">Gallery Wall</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            The side wall of a underground mine passageway or tunnel where coal was extracted.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+            <div class="bg-coal-800/80 border border-coal-700 rounded-2xl p-6 sm:p-8 text-center">
+                <span class="text-xs font-bold text-amber-lantern uppercase tracking-wider"><i class="fa-solid fa-circle-question mr-1"></i> Interactive Presentation Quiz</span>
+                <h3 class="text-2xl font-bold text-white font-serif mt-1 mb-6">Quick Class Quiz</h3>
+
+                <div id="quizContainer" class="text-left space-y-4 max-w-xl mx-auto">
+                    <p class="text-sm font-medium text-slate-200">
+                        <strong>Question:</strong> What law was passed in 1842 to protect children working in coal mines?
+                    </p>
+
+                    <div class="space-y-2">
+                        <button onclick="checkQuiz(this, false)" class="quiz-btn w-full text-left p-3 rounded-lg bg-coal-700 hover:bg-coal-600 text-sm text-slate-300 border border-coal-600 transition-colors">
+                            A) The Factory Act of 1833
+                        </button>
+                        <button onclick="checkQuiz(this, true)" class="quiz-btn w-full text-left p-3 rounded-lg bg-coal-700 hover:bg-coal-600 text-sm text-slate-300 border border-coal-600 transition-colors">
+                            B) The Mines Act of 1842
+                        </button>
+                        <button onclick="checkQuiz(this, false)" class="quiz-btn w-full text-left p-3 rounded-lg bg-coal-700 hover:bg-coal-600 text-sm text-slate-300 border border-coal-600 transition-colors">
+                            C) The Child Labor Prevention Act
+                        </button>
+                    </div>
+
+                    <div id="quizFeedback" class="hidden p-3 rounded-lg text-sm text-center font-medium mt-3"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-coal-900 border-t border-coal-700/80 py-8 px-4 text-center text-xs text-slate-500">
+        <div class="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-2 text-slate-400">
+                <i class="fa-solid fa-fire-flame-simple text-amber-lantern"></i>
+                <span class="font-semibold text-slate-300">Five Hundred Feet Below</span>
+                <span>— History & Song Presentation</span>
+            </div>
+
+            <div class="text-slate-400">
+                Created for English & History Class (Grade 7 Gymnasium Level)
+            </div>
+
+            <div>
+                <a href="#media" class="text-amber-lantern hover:underline">Back to top <i class="fa-solid fa-arrow-up ml-1"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Simple interactive quiz feedback
+        function checkQuiz(button, isCorrect) {
+            const buttons = document.querySelectorAll('.quiz-btn');
+            const feedback = document.getElementById('quizFeedback');
+
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                btn.classList.add('opacity-50', 'cursor-not-allowed');
+            });
+
+            feedback.classList.remove('hidden', 'bg-green-900/50', 'text-green-300', 'bg-red-900/50', 'text-red-300', 'border-green-600', 'border-red-600');
+
+            if (isCorrect) {
+                button.classList.remove('bg-coal-700', 'opacity-50');
+                button.classList.add('bg-green-800', 'text-white', 'border-green-500');
+                feedback.classList.add('bg-green-900/50', 'text-green-300', 'border', 'border-green-600');
+                feedback.innerHTML = '<i class="fa-solid fa-circle-check mr-1.5"></i> <strong>Correct!</strong> The Mines Act of 1842 banned boys under 10 and all women from working underground.';
+            } else {
+                button.classList.remove('bg-coal-700', 'opacity-50');
+                button.classList.add('bg-red-900/80', 'text-white', 'border-red-500');
+                feedback.classList.add('bg-red-900/50', 'text-red-300', 'border', 'border-red-600');
+                feedback.innerHTML = '<i class="fa-solid fa-circle-xmark mr-1.5"></i> <strong>Incorrect.</strong> The correct answer is B) The Mines Act of 1842.';
+            }
+        }
+    </script>
+</body>
+</html>
